@@ -34,15 +34,15 @@ const Navbar = (props: { path: string }) => {
   };
 
   return (
-    <nav className={`fixed w-full bg-white-400 backdrop-blur-md z-0 ${props}`}>
+    <nav className={`fixed w-full bg-white-400 backdrop-blur-md z-10 ${props}`}>
       <div className="flex p-2 max-w-screen-lg container flex-wrap items-center justify-between gap-20 text-xl align-middle md:justify-start">
         <h1 className="text-4xl tracking-tighter">
           <Logo />
         </h1>
         <div className="hidden md:flex justify-between align-middle flex-grow">
           <div className="flex gap-8 mt-1">
-            <LinkItem href="/works" path={path}>
-              Works
+            <LinkItem href="/projects" path={path}>
+              Projects
             </LinkItem>
             <LinkItem href="/posts" path={path}>
               Posts
@@ -76,8 +76,8 @@ const Navbar = (props: { path: string }) => {
       {isDropdownOpen && (
         <div className="md:hidden">
           <div className="flex flex-col p-2">
-            <LinkItem href="/works" path={path}>
-              Works
+            <LinkItem href="/projects" path={path}>
+              Projects
             </LinkItem>
             <LinkItem href="/posts" path={path}>
               Posts
