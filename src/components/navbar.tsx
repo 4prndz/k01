@@ -1,6 +1,7 @@
 import { ReactNode, useState } from 'react';
 import Logo from './logo';
 import NextLink from 'next/link';
+import ThemeSwitcher from '../components/themeSwitcher';
 
 const LinkItem = ({
   href,
@@ -36,22 +37,29 @@ const Navbar = (props: { path: string }) => {
     <nav
       className={`fixed w-full bg-white-400 backdrop-blur-md z-0 mt-3 ${props}`}
     >
-      <div className="flex p-2 max-w-screen-lg container flex-wrap items-center justify-between text-xl">
+      <div className="flex p-2 max-w-screen-lg container flex-wrap items-center justify-between gap-20 text-xl align-middle md:justify-start">
         <h1 className="text-4xl tracking-tighter">
           <Logo />
         </h1>
-        <div className="hidden md:flex">
-          <LinkItem href="/works" path={path}>
-            Works
-          </LinkItem>
-          <LinkItem href="/posts" path={path}>
-            Posts
-          </LinkItem>
+        <div className="hidden md:flex justify-between align-middle flex-grow">
+          <div className="flex gap-8 mt-1">
+            <LinkItem href="/works" path={path}>
+              Works
+            </LinkItem>
+            <LinkItem href="/posts" path={path}>
+              Posts
+            </LinkItem>
+          </div>
+
+          <div className="border-2 p-2 rounded-xl border-black dark:border-white ">
+            <ThemeSwitcher />
+          </div>
         </div>
-        <div className="md:hidden">
+        <div className="md:hidden flex gap-10">
+          <ThemeSwitcher />
           <button onClick={toggleDropdown} className="focus:outline-none">
             <svg
-              className="w-6 h-6"
+              className="w-8 h-8"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
