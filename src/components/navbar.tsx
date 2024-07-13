@@ -34,9 +34,7 @@ const Navbar = (props: { path: string }) => {
   };
 
   return (
-    <nav
-      className={`fixed w-full bg-white-400 backdrop-blur-md z-0 mt-3 ${props}`}
-    >
+    <nav className={`fixed w-full bg-white-400 backdrop-blur-md z-0 ${props}`}>
       <div className="flex p-2 max-w-screen-lg container flex-wrap items-center justify-between gap-20 text-xl align-middle md:justify-start">
         <h1 className="text-4xl tracking-tighter">
           <Logo />
