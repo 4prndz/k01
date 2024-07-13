@@ -44,7 +44,7 @@ const Page = () => {
         <div className="mx-auto w-48 my-8">
           <NextLink
             href="/works"
-            className="bg-gray-400 px-4 py-3 rounded-md text-center text-black duration-300 hover:bg-gray-100"
+            className="bg-gray-600 text-white dark:bg-gray-300 dark:text-black px-4 py-3 rounded-md text-center duration-300 dark:hover:bg-gray-100 hover:bg-gray-400"
           >
             My Portfolio <GoChevronRight className="inline-block" size={18} />
           </NextLink>
