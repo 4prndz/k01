@@ -1,8 +1,9 @@
 import NextLink from 'next/link';
 import { GoChevronRight } from 'react-icons/go';
-import Image from 'next/image';
+import Image, { StaticImageData } from 'next/image';
+import { ReactNode } from 'react';
 
-export const Title = ({ children }) => {
+export const Title = ({ children }: { children: ReactNode }) => {
   return (
     <>
       <div className="flex place-items-end mb-4">
@@ -20,11 +21,16 @@ export const Title = ({ children }) => {
   );
 };
 
-export const ProjectImage = ({ src, alt }) => {
+type ProjectImageProp = {
+  src: StaticImageData;
+  alt: string;
+};
+
+export const ProjectImage = ({ src, alt }: ProjectImageProp) => {
   return <Image className="rounded-lg w-full mb-4" src={src} alt={alt} />;
 };
 
-export const Meta = ({ children }) => {
+export const Meta = ({ children }: { children: ReactNode }) => {
   return (
     <div className="mr-4 px-2 font-semibold rounded-md text-white bg-cyan-300 border-2 border-cyan-500 shadown-lg">
       {children}

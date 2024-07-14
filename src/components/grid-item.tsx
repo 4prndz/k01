@@ -1,7 +1,27 @@
 import NextLink from 'next/link';
-import Image from 'next/image';
+import Image, { StaticImageData } from 'next/image';
+import { ReactNode } from 'react';
 
-export const GridItem = ({ children, href, title, thumbnail }) => {
+type GridItemProp = {
+  children: ReactNode;
+  href: string;
+  title: string;
+  thumbnail: StaticImageData;
+};
+
+type ProjectGridItemProp = {
+  children: ReactNode;
+  id: string;
+  title: string;
+  thumbnail: StaticImageData;
+};
+
+export const GridItem = ({
+  children,
+  href,
+  title,
+  thumbnail
+}: GridItemProp) => {
   return (
     <div className="flex align-center max-w-full">
       <NextLink href={href}>
@@ -20,7 +40,12 @@ export const GridItem = ({ children, href, title, thumbnail }) => {
   );
 };
 
-export const ProjectsGridItem = ({ children, id, title, thumbnail }) => {
+export const ProjectsGridItem = ({
+  children,
+  id,
+  title,
+  thumbnail
+}: ProjectGridItemProp) => {
   return (
     <div className="mb-6">
       <NextLink href={`/projects/${id}`}>
