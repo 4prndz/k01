@@ -2,95 +2,90 @@ import Image from 'next/image';
 import profile from '../../public/profile.png';
 import Section from '../components/section';
 import NextLink from 'next/link';
-import { GoChevronRight } from 'react-icons/go';
 import { FaGithub, FaTwitter, FaInstagram } from 'react-icons/fa';
+
+const socials = [
+  {
+    href: 'https://x.com/4prndz',
+    icon: FaTwitter
+  },
+  {
+    href: 'https://www.instagram.com/4prndz',
+    icon: FaInstagram
+  },
+  {
+    href: 'https://github.com/4prndz/',
+    icon: FaGithub
+  }
+];
 
 const Page = () => {
   return (
-    <div className="mx-4 text-lg">
-      <div className="rounded-lg text-white bg-gray-900 dark:bg-gray-500 p-3 my-6 text-center text-lg">
-        Hello, I&apos;m a developer based in Brasil!
+    <>
+      <div className="rounded-lg font-semibold text-white bg-gray-900 dark:bg-gray-500 p-3 mb-8 text-center text-lg shadow-lg">
+        Hello, I&apos;m a developer based in Brasil ~ 🇧🇷!
       </div>
-      <div className="flex flex-col gap-6 align-middle place-items-center md:flex-row md:justify-start">
+      <div className="mx-1 flex flex-col gap-6 align-middle place-items-center md:flex-row text-center md:text-start md:justify-start mb-8">
         <div className="flex-grow">
-          <h2 className="text-3xl font-bold mt-4 mb-2">Victor Kouichi</h2>
-          <p>4prndz ( Developer / CS and Math Student / Artist)</p>
+          <h2 className="text-4xl font-semibold mb-4">
+            Victor{' '}
+            <span className="underline underline-offset-8 font-bold">
+              Kouichi
+            </span>
+          </h2>
+          <p className="font-normal">
+            4prndz ( Developer / CS and Math Student / Artist )
+          </p>
         </div>
-        <div className="flex-grow">
+        <div className="relative w-32 h-32 md:w-12 md:h-32 flex-grow">
           <Image
             src={profile}
             alt="Profile"
-            width={125}
-            height={125}
-            className="border-2 border-black dark:border-white rounded-full inline-block"
+            layout="fill"
+            objectFit="cover"
+            objectPosition="center"
+            className="border-2 dark:border-white rounded-full"
           />
         </div>
       </div>
       <Section>
-        <h2 className="text-2xl font-bold mt-8 mb-2 underline underline-offset-8 decoration-gray-500 decoration-4">
-          About me
-        </h2>
-        <p className="leading-9 mt-5 text-lg tracking-wide indent-4">
-          I&apos;m probably one of the <b>laziest</b> developers and full-stack
-          engineers based in Goiânia.
-          <br />
-          Right now, I&apos;m diving into Computer Science and Mathematics, so
-          I&apos;ve got a good handle on tech theory.
-          <br />
-          One of my favorite things to do is check out new topics (even if I
-          drop them later) and build random projects just for fun (even if I
-          never use them).
-        </p>
-        <div className="mx-auto w-48 my-8">
-          <NextLink
-            href="/projects"
-            className="bg-gray-600 text-white dark:bg-gray-300 dark:text-black px-3 py-2 rounded-xl text-center duration-300 dark:hover:bg-gray-100 hover:bg-gray-400"
-          >
-            My Portfolio <GoChevronRight className="inline-block" size={18} />
-          </NextLink>
+        <div className="mb-8">
+          <h2 className="text-2xl font-bold underline underline-offset-8 decoration-gray-500 decoration-4 mb-4">
+            About me
+          </h2>
+          <p className="leading-9 text-lg tracking-wide indent-4">
+            I&apos;m probably one of the <b>worst</b> developers and full-stack
+            engineers that I know. I&apos;m diving into Computer Science and
+            Mathematics, so I&apos;ve got a good handle on the theory of both.
+            One of my favorite things to do is check out new topics{' '}
+            <i>(even if I drop them later)</i> and spend time building random
+            projects just for fun <i>(even if I never use them)</i>. At this
+            moment, I am suffering to finish my degree.
+          </p>
+          <div className="mx-auto w-44 my-8">
+            <NextLink
+              href="/projects"
+              className="text-white bg-gray-600 dark:bg-gray-400  hover:bg-gray-900 dark:hover:bg-gray-600  px-3 py-3 rounded-lg text-center duration-300 flex justify-center items-start gap-2 font-bold dur"
+            >
+              My portfolio <span className="font-serif">{'>'}</span>
+            </NextLink>
+          </div>
         </div>
       </Section>
 
       <Section>
-        <h2 className="text-2xl font-bold mt-14 mb-2 underline underline-offset-8 decoration-gray-500 decoration-4">
-          Experiences
-        </h2>
-        <div className="flex flex-col gap-3 mt-8">
-          <div className="grid grid-cols-2">
-            <p>
-              <b>09/2023 ~ Present</b>
-            </p>
-            <p className="">
-              Intern Back-end PHP - <i>HubSys</i>
-            </p>
-          </div>
-          <div className="grid grid-cols-2">
-            <p>
-              <b>04/2023 ~ 06/2023</b>
-            </p>
-            <p className="">
-              Freelancer <i>PrimeSites</i>
-            </p>
-          </div>
-        </div>
-      </Section>
-      <Section>
-        <h2 className="text-2xl font-bold mt-14 mb-2 underline underline-offset-8 decoration-gray-500 decoration-4">
+        <h2 className="text-2xl font-bold underline underline-offset-8 decoration-gray-500 decoration-4 mb-4">
           Socials
         </h2>
         <div className="flex mt-10 gap-16 justify-center ">
-          <NextLink href="https://x.com/4prndz ">
-            <FaGithub size={42} className="hover:scale-125 duration-300" />
-          </NextLink>
-          <NextLink href="https://www.instagram.com/4prndz">
-            <FaTwitter size={42} className="hover:scale-125 duration-300" />
-          </NextLink>
-          <NextLink href="https://github.com/4prndz">
-            <FaInstagram size={42} className="hover:scale-125 duration-300" />
-          </NextLink>
+          {socials.map((social, index) => (
+            <NextLink href={social.href} key={index} target="_blank">
+              <social.icon size={36} className="hover:scale-125 duration-300" />
+            </NextLink>
+          ))}
         </div>
       </Section>
-    </div>
+    </>
   );
 };
 

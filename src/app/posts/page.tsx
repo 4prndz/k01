@@ -7,7 +7,7 @@ const Posts = () => {
   return (
     <Section>
       <Layout title="Posts">
-        <div className="mx-4">
+        <>
           <h3 className="text-2xl mb-4 font-bold">Posts</h3>
           <Section>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -20,7 +20,7 @@ const Posts = () => {
               </GridItem>
             </div>
           </Section>
-        </div>
+        </>
       </Layout>
     </Section>
   );

@@ -8,7 +8,7 @@ import exampleImage from '../../../../public/example-thumbnail.jpg';
 const Project = () => {
   return (
     <Section>
-      <div className="mx-4">
+      <>
         <Layout title="example">
           <div className="mb-8">
             <Title>Example</Title>
@@ -51,7 +51,7 @@ const Project = () => {
           <ProjectImage src={exampleImage} alt="Example" />
           <ProjectImage src={exampleImage} alt="Example" />
         </Layout>
-      </div>
+      </>
     </Section>
   );
 };

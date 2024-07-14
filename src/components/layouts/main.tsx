@@ -11,7 +11,7 @@ const Main = ({ children }: { children: ReactNode }) => {
         <title>4prndz - Website</title>
       </Head>
       <Navbar />
-      <div className="pt-32 mx-auto max-w-screen-md">{children}</div>
+      <div className="pt-32 mx-auto max-w-screen-md px-6">{children}</div>
       <Footer />
     </main>
   );

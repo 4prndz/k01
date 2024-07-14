@@ -6,7 +6,7 @@ import ExampleThumb3 from '@/../public/example-thumbnail-2.png';
 
 const Projects = () => {
   return (
-    <div className="mx-4">
+    <>
       <Section>
         <h3 className="text-2xl mb-4 font-bold">Projects</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -38,7 +38,7 @@ const Projects = () => {
           </Section>
         </div>
       </Section>
-    </div>
+    </>
   );
 };
 
