@@ -1,5 +1,5 @@
-import Section from '../components/section';
-import { ProjectsGridItem } from '../components/grid-item';
+import Section from '../../components/section';
+import { ProjectsGridItem } from '../../components/grid-item';
 import ExampleThumb from '@/../public/example-thumbnail.jpg';
 import ExampleThumb2 from '@/../public/example-thumbnail-3.png';
 import ExampleThumb3 from '@/../public/example-thumbnail-2.png';

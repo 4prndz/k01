@@ -1,4 +1,6 @@
-import { ReactNode, useState } from 'react';
+'use client';
+
+import { ReactNode, useEffect, useState, useRef } from 'react';
 import Logo from './logo';
 import NextLink from 'next/link';
 import ThemeSwitcher from '../components/themeSwitcher';
@@ -28,14 +30,31 @@ const LinkItem = ({
 const Navbar = (props: { path: string }) => {
   const { path } = props;
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
 
+  const handleClickOutside = (event: MouseEvent) => {
+    if (
+      dropdownRef.current &&
+      !dropdownRef.current.contains(event.target as Node)
+    ) {
+      setIsDropdownOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
   return (
-    <nav className={`fixed w-full bg-white-400 backdrop-blur-md z-10 ${props}`}>
-      <div className="flex p-2 max-w-screen-lg container flex-wrap items-center justify-between gap-20 text-xl align-middle md:justify-start">
+    <nav className={`fixed w-full bg-white-400 z-10 ${props}`}>
+      <div className="flex p-2 max-w-screen-lg container flex-wrap items-center justify-between gap-20 text-xl align-middle md:justify-start backdrop-blur-2xl bg-white/15 dark:bg-black/15 ">
         <h1 className="text-4xl tracking-tighter">
           <Logo />
         </h1>
@@ -49,15 +68,20 @@ const Navbar = (props: { path: string }) => {
             </LinkItem>
           </div>
 
-          <div className="border-2 p-2 rounded-xl border-black dark:border-white ">
+          <div className="p-2 px-2 rounded-xl bg-violet-300 text-black dark:bg-yellow-300">
             <ThemeSwitcher />
           </div>
         </div>
         <div className="md:hidden flex gap-10">
-          <ThemeSwitcher />
-          <button onClick={toggleDropdown} className="focus:outline-none">
+          <div className="p-2 px-2 rounded-xl bg-violet-300 text-black dark:bg-yellow-300">
+            <ThemeSwitcher />
+          </div>
+          <button
+            onClick={toggleDropdown}
+            className="focus:outline-none bg-white border shadow-lg p-1 rounded-xl dark:bg-black/0"
+          >
             <svg
-              className="w-8 h-8"
+              className="w-8 h-8 rounded-lg"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -74,13 +98,18 @@ const Navbar = (props: { path: string }) => {
         </div>
       </div>
       {isDropdownOpen && (
-        <div className="md:hidden">
-          <div className="flex flex-col p-2">
+        <div className="flex justify-end md:hidden" ref={dropdownRef}>
+          <div className="w-56 flex flex-col justify-center align-middle p-2 bg-white rounded-xl shadow-black mx-2 animate-fade-down animate-duration-200 dark:text-black shadow-sm">
             <LinkItem href="/projects" path={path}>
-              Projects
+              <p onClick={toggleDropdown} className="max-w-full">
+                Projects
+              </p>
             </LinkItem>
+            <hr />
             <LinkItem href="/posts" path={path}>
-              Posts
+              <p onClick={toggleDropdown} className="max-w-full">
+                Posts
+              </p>
             </LinkItem>
           </div>
         </div>
@@ -88,4 +117,5 @@ const Navbar = (props: { path: string }) => {
     </nav>
   );
 };
+
 export { LinkItem, Navbar };
