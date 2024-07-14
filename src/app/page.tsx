@@ -30,7 +30,7 @@ const Page = () => {
         <h2 className="text-2xl font-bold mt-8 mb-2 underline underline-offset-8 decoration-gray-500 decoration-4">
           About me
         </h2>
-        <p className="leading-9 mt-5 text-lg tracking-wide">
+        <p className="leading-9 mt-5 text-lg tracking-wide indent-4">
           I&apos;m probably one of the <b>laziest</b> developers and full-stack
           engineers based in Goiânia.
           <br />

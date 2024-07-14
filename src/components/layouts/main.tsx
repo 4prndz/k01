@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import { Navbar } from '../navbar';
 import { ReactNode } from 'react';
+import Footer from '../../components/footer';
 
 const Main = ({ children }: { children: ReactNode }) => {
   return (
@@ -11,6 +12,7 @@ const Main = ({ children }: { children: ReactNode }) => {
       </Head>
       <Navbar path="/" />
       <div className="pt-32 mx-auto max-w-screen-md">{children}</div>
+      <Footer />
     </main>
   );
 };

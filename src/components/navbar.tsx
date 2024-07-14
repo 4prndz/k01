@@ -4,22 +4,21 @@ import { ReactNode, useEffect, useState, useRef } from 'react';
 import Logo from './logo';
 import NextLink from 'next/link';
 import ThemeSwitcher from '../components/themeSwitcher';
+import { usePathname } from 'next/navigation';
 
 const LinkItem = ({
   href,
-  path,
   children
 }: {
   href: string;
-  path: string;
   children: ReactNode;
 }) => {
-  const active = path === href;
+  const active = usePathname() === href;
   // const inactiveColor = #AFAFAF;
   return (
     <NextLink href={href}>
       <div
-        className={`p-2 ${active ?? 'bg-cyan-300'} ${active ?? 'text-black'} hover:underline`}
+        className={`py-2 px-3 ${active && 'bg-cyan-300 text-black underline'} rounded-sm hover:underline duration-300`}
       >
         {children}
       </div>
@@ -27,8 +26,7 @@ const LinkItem = ({
   );
 };
 
-const Navbar = (props: { path: string }) => {
-  const { path } = props;
+const Navbar = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
@@ -53,18 +51,18 @@ const Navbar = (props: { path: string }) => {
   }, []);
 
   return (
-    <nav className={`fixed w-full bg-white-400 z-10 ${props}`}>
+    <nav className={`fixed w-full bg-white-400 z-10`}>
       <div className="flex p-2 max-w-screen-lg container flex-wrap items-center justify-between gap-20 text-xl align-middle md:justify-start backdrop-blur-2xl bg-white/15 dark:bg-black/15 ">
         <h1 className="text-4xl tracking-tighter">
           <Logo />
         </h1>
         <div className="hidden md:flex justify-between align-middle flex-grow">
           <div className="flex gap-8 mt-1">
-            <LinkItem href="/projects" path={path}>
-              Projects
+            <LinkItem href="/projects">
+              <p>Projects</p>
             </LinkItem>
-            <LinkItem href="/posts" path={path}>
-              Posts
+            <LinkItem href="/posts">
+              <p>Posts</p>
             </LinkItem>
           </div>
 
@@ -100,13 +98,13 @@ const Navbar = (props: { path: string }) => {
       {isDropdownOpen && (
         <div className="flex justify-end md:hidden" ref={dropdownRef}>
           <div className="w-56 flex flex-col justify-center align-middle p-2 bg-white rounded-xl shadow-black mx-2 animate-fade-down animate-duration-200 dark:text-black shadow-sm">
-            <LinkItem href="/projects" path={path}>
+            <LinkItem href="/projects">
               <p onClick={toggleDropdown} className="max-w-full">
                 Projects
               </p>
             </LinkItem>
             <hr />
-            <LinkItem href="/posts" path={path}>
+            <LinkItem href="/posts">
               <p onClick={toggleDropdown} className="max-w-full">
                 Posts
               </p>
