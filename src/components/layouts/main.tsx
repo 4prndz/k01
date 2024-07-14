@@ -5,7 +5,7 @@ import Footer from '../../components/footer';
 
 const Main = ({ children }: { children: ReactNode }) => {
   return (
-    <main className="pb-8 max-w-screen-lg mx-auto">
+    <main className="pb-8 max-w-full mx-auto">
       <Head>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <title>4prndz - Website</title>

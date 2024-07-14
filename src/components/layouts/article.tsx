@@ -8,7 +8,7 @@ const Layout = ({
   children: ReactNode;
   title: string;
 }) => {
-  const t = `${title} - Takuya Matsuyama`;
+  const t = `${title} - 4prndz`;
   return (
     <>
       {title && (

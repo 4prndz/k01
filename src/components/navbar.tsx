@@ -18,7 +18,7 @@ const LinkItem = ({
   return (
     <NextLink href={href}>
       <div
-        className={`py-2 px-3 ${active && 'bg-cyan-300 text-black underline'} rounded-sm hover:underline duration-300`}
+        className={`py-2 px-3 ${active && 'underline'} rounded- hover:underline duration-300`}
       >
         {children}
       </div>
@@ -51,12 +51,14 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className={`fixed w-full bg-white-400 z-10`}>
-      <div className="flex p-2 max-w-screen-lg container flex-wrap items-center justify-between gap-20 text-xl align-middle md:justify-start backdrop-blur-2xl bg-white/15 dark:bg-black/15 ">
+    <nav
+      className={`flex flex-col md:place-items-center justify-center fixed w-full bg-white-400 z-10 backdrop-blur-2xl bg-white/15 dark:bg-black/15 `}
+    >
+      <div className="flex p-2 max-w-screen-md container flex-wrap items-center justify-between gap-20 text-xl align-middle md:justify-start">
         <h1 className="text-4xl tracking-tighter">
           <Logo />
         </h1>
-        <div className="hidden md:flex justify-between align-middle flex-grow">
+        <div className="hidden md:flex justify-between align-middle place-items-center flex-grow">
           <div className="flex gap-8 mt-1">
             <LinkItem href="/projects">
               <p>Projects</p>
@@ -96,7 +98,10 @@ const Navbar = () => {
         </div>
       </div>
       {isDropdownOpen && (
-        <div className="flex justify-end md:hidden" ref={dropdownRef}>
+        <div
+          className="flex justify-end absolute right-0 top-16 md:hidden"
+          ref={dropdownRef}
+        >
           <div className="w-56 flex flex-col justify-center align-middle p-2 bg-white rounded-xl shadow-black mx-2 animate-fade-down animate-duration-200 dark:text-black shadow-sm">
             <LinkItem href="/projects">
               <p onClick={toggleDropdown} className="max-w-full">
